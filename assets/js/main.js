@@ -4,17 +4,30 @@
    ========================================================== */
 const CONFIG = {
   // Demo requests go to every address here (first = main recipient, rest = CC).
-  emails: ['aacosta@nexos.com', 'gtellerias@nexos.com'],
+  emails: ['aacosta@nexostechs.com', 'gtellerias@nexostechs.com'],
   whatsapp: '18295631041',            // country code + number, digits only
   phone: '+1 829 563 1041',
   address: 'Av. Winston Churchill, Santo Domingo',
   // FormSubmit (formsubmit.co) delivers the form by email, no server needed.
   // After activation you can replace the address in the URL with the random
   // alias FormSubmit sends you, so the email is not visible in the code.
-  formEndpoint: 'https://formsubmit.co/ajax/aacosta@nexos.com'
+  formEndpoint: 'https://formsubmit.co/ajax/aacosta@nexostechs.com',
+  // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. Empty = no analytics.
+  ga4: ''
 };
 
 document.documentElement.classList.add('js');
+
+/* ---------- analytics (optional) ---------- */
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+const track = (name, params = {}) => { if (CONFIG.ga4) gtag('event', name, params); };
+if (CONFIG.ga4) {
+  const s = document.createElement('script');
+  s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.ga4;
+  document.head.appendChild(s);
+  gtag('js', new Date()); gtag('config', CONFIG.ga4, { anonymize_ip: true });
+}
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
@@ -173,6 +186,10 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
 /* ---------- plan buttons prefill the form ---------- */
 $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-select').value = a.dataset.plan; }));
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="https://wa.me"], a[href^="tel:"]');
+  if (a) track('contact_click', { method: a.href.startsWith('tel:') ? 'phone' : 'whatsapp' });
+});
 
 /* ---------- contact form ---------- */
 (() => {
@@ -231,6 +248,7 @@ $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-sele
       });
       const res = await r.json().catch(() => ({}));
       if (!r.ok || String(res.success) !== 'true') throw new Error(res.message || r.status);
+      track('generate_lead', { plan: data.plan, empleados: data.empleados });
       form.reset();
       say('Solicitud enviada. Te escribimos hoy para agendar la demo.', 'ok');
     } catch {
@@ -244,7 +262,7 @@ $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-sele
 
 /* ---------- reveal on scroll ---------- */
 (() => {
-  const els = $$('.sec-head, .frame, .steps, .law-list, .filing-list, .feats, .plans, .faq, .phones, .form');
+  const els = $$('.sec-head, .frame, .steps, .law-list, .filing-list, .vs, .cal, .sec-list, .founders-list, .feats, .plans, .faq, .phones, .form');
   if (!('IntersectionObserver' in window)) return;
   els.forEach(el => el.classList.add('rv'));
   const io = new IntersectionObserver(entries => entries.forEach(en => {
