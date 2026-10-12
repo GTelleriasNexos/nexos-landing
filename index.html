@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es-DO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXOS — RRHH y Nómina para empresas dominicanas</title>
+<meta name="description" content="NEXOS une recursos humanos y nómina en un solo sistema hecho para la ley dominicana: AFP, SFS, ISR, INFOTEP, Ley 16-92, expedientes, asistencia y vacaciones.">
+<meta property="og:title" content="NEXOS — RRHH y Nómina">
+<meta property="og:description" content="Recursos humanos y nómina en un solo sistema, hecho para la ley dominicana.">
+<meta property="og:image" content="assets/shots/payroll.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#18181B">
+<link rel="icon" href="assets/brand/nexos-favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/brand/nexos-favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/nexos-favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a href="#top" class="logo" aria-label="NEXOS Solutions, inicio">
+      <img src="assets/brand/nexos-lockup-matriz-claro.svg" alt="NEXOS Solutions" width="155" height="44">
+    </a>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#producto">Producto</a>
+      <a href="#corrida">Nómina</a>
+      <a href="#cumplimiento">Cumplimiento</a>
+      <a href="#precios">Precios</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto" class="btn btn-ink menu-cta">Solicitar demo</a>
+    </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker"><span class="dot dot-rrhh"></span>RRHH <span class="sep">+</span> <span class="dot dot-nom"></span>Nómina&nbsp;&nbsp;·&nbsp;&nbsp;República Dominicana</p>
+      <h1>Nómina dominicana, explicada línea por línea.</h1>
+      <p class="lede">NEXOS reúne expedientes, asistencia, vacaciones y nómina en un solo sistema. AFP, SFS, ISR e INFOTEP se calculan solos, y cada aprobación queda registrada con nombre y fecha.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-ink btn-lg">Solicitar una demo</a>
+        <a href="#producto" class="btn btn-line btn-lg">Ver el producto</a>
+      </div>
+      <ul class="hero-proof">
+        <li>Escala ISR de la DGII versionada por año</li>
+        <li>Ley 16-92 con artículos citados</li>
+        <li>Portal del empleado en el celular</li>
+      </ul>
+    </div>
+
+    <!-- Signature: live payslip -->
+    <div class="slip-col">
+      <div class="slip" aria-labelledby="slip-title">
+        <div class="slip-head">
+          <span class="slip-mark" aria-hidden="true">TE</span>
+          <div>
+            <p class="slip-co">Tu Empresa, SRL</p>
+            <p class="slip-meta">Volante de pago · mensual</p>
+          </div>
+          <p class="slip-tag" id="slip-title">Simulador</p>
+        </div>
+
+        <label class="slip-input" for="sal">
+          <span>Salario mensual</span>
+          <span class="slip-field">
+            <span class="cur">RD$</span>
+            <input id="sal" type="text" inputmode="numeric" value="85,000" autocomplete="off" aria-describedby="slip-note">
+          </span>
+        </label>
+        <input id="sal-range" class="range" type="range" min="25000" max="400000" step="5000" value="85000" aria-label="Ajustar salario mensual">
+
+        <div class="slip-cols">
+          <div>
+            <p class="slip-h">Descuentos al empleado</p>
+            <dl class="lines">
+              <div><dt>AFP <span>2.87%</span></dt><dd class="neg" data-out="afp"></dd></div>
+              <div><dt>SFS <span>3.04%</span></dt><dd class="neg" data-out="sfs"></dd></div>
+              <div><dt>ISR <span>escala DGII</span></dt><dd class="neg" data-out="isr"></dd></div>
+            </dl>
+            <div class="total">
+              <span>Neto a pagar</span>
+              <strong data-out="net"></strong>
+            </div>
+          </div>
+          <div class="slip-er">
+            <p class="slip-h">Aportes de la empresa</p>
+            <dl class="lines">
+              <div><dt>AFP <span>7.10%</span></dt><dd data-out="afpE"></dd></div>
+              <div><dt>SFS <span>7.09%</span></dt><dd data-out="sfsE"></dd></div>
+              <div><dt>SRL <span>1.10%</span></dt><dd data-out="srl"></dd></div>
+              <div><dt>INFOTEP <span>1.00%</span></dt><dd data-out="inf"></dd></div>
+            </dl>
+            <div class="total total-soft">
+              <span>Costo total</span>
+              <strong data-out="cost"></strong>
+            </div>
+          </div>
+        </div>
+        <p class="slip-note" id="slip-note">Cálculo ilustrativo. En NEXOS se aplican además los topes de cotización de la TSS, horas extra, bonos y descuentos recurrentes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAW STRIP ============ -->
+<section class="strip" aria-label="Lo que NEXOS calcula y reporta">
+  <div class="wrap strip-in">
+    <p class="strip-label">Calcula y reporta</p>
+    <ul class="strip-list">
+      <li><b>TSS</b> autodeterminación mensual</li>
+      <li><b>AFP</b> pensiones</li>
+      <li><b>SFS</b> salud familiar</li>
+      <li><b>SRL</b> riesgos laborales</li>
+      <li><b>INFOTEP</b> 1% y 0.5%</li>
+      <li><b>ISR</b> retenciones DGII</li>
+      <li><b>Regalía</b> salario de Navidad</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PRODUCT SHOWCASE ============ -->
+<section class="sec" id="producto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Producto</p>
+      <h2>Dos módulos que comparten un mismo expediente.</h2>
+      <p class="sec-lede">RRHH lleva a las personas. Nómina les paga. Como trabajan sobre los mismos datos, un aumento, una licencia o una hora extra aprobada ya están en la próxima corrida.</p>
+    </div>
+
+    <div class="show" data-app="rrhh">
+      <div class="show-switch" role="tablist" aria-label="Módulo">
+        <button role="tab" class="sw sw-rrhh" aria-selected="true" data-app-btn="rrhh"><span class="dot dot-rrhh"></span>RRHH</button>
+        <button role="tab" class="sw sw-nom" aria-selected="false" data-app-btn="nomina"><span class="dot dot-nom"></span>Nómina</button>
+      </div>
+
+      <div class="show-body">
+        <ul class="show-tabs" id="show-tabs" role="tablist" aria-label="Pantallas"></ul>
+        <figure class="frame">
+          <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span id="frame-url">app.nexos.do/panel</span></div>
+          <img id="show-img" src="assets/shots/dashboard.webp" width="1600" height="1000" alt="Panel de RRHH de NEXOS con empleados activos, asistencia del día y aprobaciones pendientes">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAYROLL RUN ============ -->
+<section class="sec sec-tint" id="corrida">
+  <div class="wrap run">
+    <div class="run-copy">
+      <p class="eyebrow eyebrow-nom">Corrida de nómina</p>
+      <h2>Seis pasos, del período a la transferencia.</h2>
+      <p class="sec-lede">La corrida avanza en orden y no deja aprobar mientras haya anomalías sin revisar: un salario que cambió mucho, horas extra fuera de lo normal o una cuenta bancaria faltante.</p>
+      <ol class="steps">
+        <li><b>Período</b><span>Tipo de nómina, fechas de pago y corte de asistencia.</span></li>
+        <li><b>Empleados</b><span>Entran los activos; los ingresos después del corte cobran proporcional.</span></li>
+        <li><b>Ingresos</b><span>Salario, horas extra al 135% y 200%, bonos y comisiones aprobadas.</span></li>
+        <li><b>Deducciones</b><span>AFP, SFS, ISR, préstamos y avances, con su base de cálculo.</span></li>
+        <li><b>Revisión</b><span>Comparación contra el mes anterior y alertas por empleado.</span></li>
+        <li><b>Aprobación</b><span>Firma de quien aprueba, archivo bancario y volantes enviados.</span></li>
+      </ol>
+    </div>
+    <figure class="frame frame-tilt">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.nexos.do/nomina/corridas/2026-08</span></div>
+      <img src="assets/shots/payroll-run.webp" width="1600" height="1000" loading="lazy" alt="Pantalla de corrida de nómina de agosto 2026, paso 1 de 6: período">
+    </figure>
+  </div>
+</section>
+
+<!-- ============ COMPLIANCE ============ -->
+<section class="sec" id="cumplimiento">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cumplimiento</p>
+      <h2>El Código de Trabajo, dentro del sistema.</h2>
+      <p class="sec-lede">Cada cálculo legal muestra el artículo que lo sustenta. Cuando cambia una escala o una tasa, NEXOS crea una versión nueva y las nóminas pasadas conservan la que usaron.</p>
+    </div>
+
+    <div class="law">
+      <figure class="frame">
+        <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>app.nexos.do/liquidaciones</span></div>
+        <img src="assets/shots/liquidaciones.webp" width="1600" height="1000" loading="lazy" alt="Calculadora de prestaciones y liquidación con preaviso, cesantía, vacaciones y salario de Navidad">
+      </figure>
+      <dl class="law-list">
+        <div><dt>Preaviso y cesantía</dt><dd>Según tiempo de servicio y tipo de terminación.</dd><span class="art">Art. 76 · 80</span></div>
+        <div><dt>Vacaciones</dt><dd>14 días laborables, 18 desde los cinco años.</dd><span class="art">Art. 177</span></div>
+        <div><dt>Horas extra y recargos</dt><dd>135%, 200%, nocturno y feriados trabajados.</dd><span class="art">Art. 203–205</span></div>
+        <div><dt>Salario de Navidad</dt><dd>Proporcional a lo devengado en el año.</dd><span class="art">Art. 219</span></div>
+        <div><dt>Bonificación</dt><dd>10% de utilidades, con topes por antigüedad.</dd><span class="art">Art. 223</span></div>
+        <div><dt>Bitácora</dt><dd>Quién cambió qué y cuándo, sin poder borrarlo.</dd><span class="art">Auditoría</span></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMPLOYEE PORTAL ============ -->
+<section class="sec sec-ink" id="portal">
+  <div class="wrap portal">
+    <div class="portal-copy">
+      <p class="eyebrow eyebrow-inv">Portal del empleado</p>
+      <h2>Menos correos a Recursos Humanos.</h2>
+      <p class="sec-lede">Cada colaborador marca entrada y salida, pide vacaciones, descarga su volante y actualiza sus datos desde el celular. Su supervisor aprueba desde el mismo lugar.</p>
+      <ul class="ticks">
+        <li>Marcaje con hora y ubicación de la sucursal</li>
+        <li>Balance de vacaciones siempre al día</li>
+        <li>Volantes de los últimos meses en PDF</li>
+        <li>Carta de trabajo sin pedirla por correo</li>
+      </ul>
+    </div>
+    <img class="phones" src="assets/shots/mobile.webp" width="1400" height="892" loading="lazy" alt="Tres pantallas del portal móvil: inicio con marcaje, solicitud de vacaciones y volante de pago">
+  </div>
+</section>
+
+<!-- ============ EVERYTHING ELSE ============ -->
+<section class="sec" id="modulos">
+  <div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <p class="eyebrow">También incluye</p>
+        <h2>Lo demás que hoy vive en carpetas y hojas de cálculo.</h2>
+      </div>
+    </div>
+    <div class="feats">
+      <article><h3>Expedientes</h3><p>Contratos, cédulas y certificados por empleado, con alertas de vencimiento.</p></article>
+      <article><h3>Acciones de personal</h3><p>Aumentos, traslados y amonestaciones quedan en el historial del empleado.</p></article>
+      <article><h3>Reclutamiento</h3><p>Vacantes, candidatos por etapa y oferta que se convierte en empleado.</p></article>
+      <article><h3>Desempeño</h3><p>Evaluaciones semestrales con objetivos y comentarios del supervisor.</p></article>
+      <article><h3>Roles y permisos</h3><p>Cada usuario ve solo lo que le toca. Doble factor para todos.</p></article>
+      <article><h3>Reportes</h3><p>Rotación, ausentismo, costo por departamento y reportes a medida.</p></article>
+      <article><h3>Multiempresa</h3><p>Varias razones sociales con un mismo acceso y datos separados.</p></article>
+      <article><h3>Integraciones</h3><p>Archivo de pago para tu banco y exportación contable.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="sec sec-tint" id="precios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Precios</p>
+      <h2>Pagas por empleado activo. La propuesta se ajusta a tu empresa.</h2>
+      <p class="sec-lede">Estos son precios de referencia. Cada propuesta considera la cantidad de empleados, los módulos y el plazo del contrato. Precios en pesos dominicanos, ITBIS no incluido.</p>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>Starter</h3>
+        <p class="price"><span class="from">Desde</span><span class="amt">RD$ 285</span><span class="per">por empleado / mes</span></p>
+        <p class="cap">Hasta 25 empleados</p>
+        <ul class="ticks ticks-dark">
+          <li>Expedientes de empleados</li>
+          <li>Asistencia y horarios</li>
+          <li>Vacaciones y licencias</li>
+          <li>Portal del empleado</li>
+        </ul>
+        <a href="#contacto" class="btn btn-line" data-plan="Starter">Pedir cotización</a>
+      </article>
+      <article class="plan plan-main">
+        <p class="plan-flag">El más elegido</p>
+        <h3>Professional</h3>
+        <p class="price"><span class="from">Desde</span><span class="amt">RD$ 420</span><span class="per">por empleado / mes</span></p>
+        <p class="cap">Hasta 250 empleados</p>
+        <ul class="ticks ticks-dark">
+          <li>Todo lo de Starter</li>
+          <li>Motor de nómina completo</li>
+          <li>Reclutamiento y desempeño</li>
+          <li>Reportes a medida</li>
+          <li>Integraciones</li>
+        </ul>
+        <a href="#contacto" class="btn btn-ink" data-plan="Professional">Solicitar demo</a>
+      </article>
+      <article class="plan">
+        <h3>Enterprise</h3>
+        <p class="price"><span class="from">Precio</span><span class="amt">A medida</span><span class="per">facturación anual</span></p>
+        <p class="cap">Empleados ilimitados</p>
+        <ul class="ticks ticks-dark">
+          <li>Todo lo de Professional</li>
+          <li>Multiempresa</li>
+          <li>SSO y seguridad avanzada</li>
+          <li>Soporte dedicado y SLA</li>
+        </ul>
+        <a href="#contacto" class="btn btn-line" data-plan="Enterprise">Hablar con ventas</a>
+      </article>
+    </div>
+
+    <div class="mig">
+      <div class="mig-head">
+        <h3>Implementación y migración de datos</h3>
+        <p>Se cotiza aparte, porque depende de dónde está tu información hoy. Revisamos una muestra de tus datos y te enviamos el monto antes de empezar.</p>
+      </div>
+      <dl class="mig-list">
+        <div>
+          <dt>Desde Excel o plantillas</dt>
+          <dd>Empleados, salarios y balances de vacaciones se cargan con nuestra plantilla. Es el camino más rápido y económico.</dd>
+        </div>
+        <div>
+          <dt>Desde otro sistema de nómina</dt>
+          <dd>Extraemos y convertimos la data del sistema actual. El costo varía según el formato de exportación y cuántos años de historial quieras traer.</dd>
+        </div>
+        <div>
+          <dt>Expedientes en papel o dispersos</dt>
+          <dd>Digitalizamos y ordenamos contratos y documentos por empleado. Se cotiza por volumen.</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="preguntas">
+  <div class="wrap faq-grid">
+    <div class="sec-head">
+      <p class="eyebrow">Preguntas frecuentes</p>
+      <h2>Antes de agendar.</h2>
+      <p class="sec-lede">¿No ves tu pregunta? <a class="link" href="#contacto">Escríbenos</a> y te respondemos en el día.</p>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>¿Cuánto tarda la implementación?</summary>
+        <p>Depende del origen de los datos. Si vienen de Excel, una empresa de hasta 100 empleados suele quedar lista en una o dos semanas. Si hay que migrar desde otro sistema o traer historial, el plazo se define en la propuesta. En todos los casos corremos un mes en paralelo con tu proceso actual antes de pasar a NEXOS.</p>
+      </details>
+      <details>
+        <summary>¿La migración de datos tiene costo?</summary>
+        <p>Sí, se cotiza aparte de la suscripción. El monto depende de dónde está tu información (Excel, otro sistema o papel), de la cantidad de empleados y de cuánto historial quieras conservar. Te lo damos por escrito antes de empezar, después de revisar una muestra.</p>
+      </details>
+      <details>
+        <summary>¿Genera el archivo para la TSS?</summary>
+        <p>Sí. Al aprobar la nómina se genera el archivo de autodeterminación con los aportes de AFP, SFS y SRL de cada empleado, listo para subir.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa cuando cambia la escala del ISR o una tasa?</summary>
+        <p>Actualizamos los parámetros y se guardan como una versión nueva. Las nóminas pasadas mantienen la escala con la que se calcularon, así que los reportes históricos no cambian.</p>
+      </details>
+      <details>
+        <summary>¿Con qué bancos funciona el pago?</summary>
+        <p>Generamos el archivo de pago en el formato de los principales bancos del país. Si tu banco no está en la lista, lo agregamos durante la implementación.</p>
+      </details>
+      <details>
+        <summary>¿Dónde se guardan los datos?</summary>
+        <p>En servidores en la nube con cifrado en tránsito y en reposo, respaldos diarios y doble factor de autenticación para todos los usuarios. Cada cambio queda en la bitácora.</p>
+      </details>
+      <details>
+        <summary>¿Puedo usar solo RRHH o solo Nómina?</summary>
+        <p>Sí. El plan Starter incluye solo RRHH. Si más adelante activas Nómina, se usan los mismos expedientes sin migrar nada.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow eyebrow-inv">Contacto</p>
+      <h2>Te mostramos NEXOS con tu propia nómina.</h2>
+      <p class="sec-lede">En 30 minutos corremos un mes de tu empresa en NEXOS y comparamos el resultado con tu cálculo actual.</p>
+      <ul class="channels">
+        <li><span class="ch-label">Correo</span><a data-contact="email" href="#"></a></li>
+        <li><span class="ch-label">WhatsApp</span><a data-contact="whatsapp" href="#" target="_blank" rel="noopener"></a></li>
+        <li><span class="ch-label">Teléfono</span><a data-contact="phone" href="#"></a></li>
+        <li><span class="ch-label">Oficina</span><span data-contact="address"></span></li>
+      </ul>
+    </div>
+
+    <form class="form" id="contact-form" novalidate>
+      <div class="f-row">
+        <label class="f">
+          <span>Nombre</span>
+          <input name="nombre" type="text" autocomplete="name" required>
+        </label>
+        <label class="f">
+          <span>Empresa</span>
+          <input name="empresa" type="text" autocomplete="organization" required>
+        </label>
+      </div>
+      <div class="f-row">
+        <label class="f">
+          <span>Correo de trabajo</span>
+          <input name="correo" type="email" autocomplete="email" required>
+        </label>
+        <label class="f">
+          <span>Teléfono o WhatsApp <em>opcional</em></span>
+          <input name="telefono" type="tel" autocomplete="tel" placeholder="809 000 0000">
+        </label>
+      </div>
+      <div class="f-row">
+        <label class="f">
+          <span>Empleados</span>
+          <select name="empleados" required>
+            <option value="">Selecciona</option>
+            <option>1 – 25</option>
+            <option>26 – 100</option>
+            <option>101 – 250</option>
+            <option>Más de 250</option>
+          </select>
+        </label>
+        <label class="f">
+          <span>Plan de interés</span>
+          <select name="plan" id="plan-select">
+            <option>Aún no sé</option>
+            <option>Starter</option>
+            <option>Professional</option>
+            <option>Enterprise</option>
+          </select>
+        </label>
+      </div>
+      <label class="f">
+        <span>¿Dónde está tu información hoy?</span>
+        <select name="origen_datos">
+          <option>Excel u hojas de cálculo</option>
+          <option>Otro sistema de nómina</option>
+          <option>Papel o carpetas</option>
+          <option>Una mezcla de lo anterior</option>
+        </select>
+      </label>
+      <label class="f">
+        <span>¿Cómo calculan la nómina hoy? <em>opcional</em></span>
+        <textarea name="mensaje" rows="3" placeholder="Por ejemplo: Excel y un contador externo, quincenal, 60 empleados."></textarea>
+      </label>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="f-foot">
+        <button class="btn btn-nom btn-lg" type="submit">Solicitar demo</button>
+        <p class="f-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a href="#top" class="logo"><img src="assets/brand/nexos-lockup-matriz-oscuro.svg" alt="NEXOS Solutions" width="134" height="38"></a>
+    <nav aria-label="Pie de página">
+      <a href="#producto">Producto</a>
+      <a href="#precios">Precios</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <p class="foot-legal">© <span id="year">2026</span> NEXOS · Santo Domingo, República Dominicana</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

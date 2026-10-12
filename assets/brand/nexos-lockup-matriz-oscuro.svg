@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 528 150" width="528" height="150">
+<g transform="translate(12,20) scale(0.55)"><g transform="translate(150,150) scale(0.9) translate(-150,-150)">
+<g stroke-linecap="round" fill="none" stroke-width="22">
+<line x1="150" y1="150" x2="150" y2="58" stroke="#F0855F"/>
+<line x1="150" y1="150" x2="70" y2="212" stroke="#94A3B8"/>
+<line x1="150" y1="150" x2="230" y2="212" stroke="#34A356"/></g>
+<circle cx="150" cy="58" r="30" fill="#F0855F"/><circle cx="70" cy="212" r="30" fill="#94A3B8"/>
+<circle cx="230" cy="212" r="30" fill="#34A356"/><circle cx="150" cy="150" r="34" fill="#FAFAFA"/></g></g>
+<text x="205" y="104" font-family="Helvetica,Arial,sans-serif" font-size="72" font-weight="600" letter-spacing="13" fill="#FAFAFA">NEXOS</text>
+<text x="208" y="164" font-family="Helvetica,Arial,sans-serif" font-size="34" font-weight="600" letter-spacing="9" fill="#A1A1AA">SOLUTIONS</text></svg>
