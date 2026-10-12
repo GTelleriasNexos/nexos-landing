@@ -244,7 +244,7 @@ $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-sele
 
 /* ---------- reveal on scroll ---------- */
 (() => {
-  const els = $$('.sec-head, .frame, .steps, .law-list, .feats, .plans, .faq, .phones, .form');
+  const els = $$('.sec-head, .frame, .steps, .law-list, .filing-list, .feats, .plans, .faq, .phones, .form');
   if (!('IntersectionObserver' in window)) return;
   els.forEach(el => el.classList.add('rv'));
   const io = new IntersectionObserver(entries => entries.forEach(en => {
