@@ -4,14 +4,14 @@
    ========================================================== */
 const CONFIG = {
   // Demo requests go to every address here (first = main recipient, rest = CC).
-  emails: ['aacosta@nexostechs.com', 'gtellerias@nexostechs.com'],
+  emails: ['gtellerias@nexostechs.com', 'aacosta@nexostechs.com'],
   whatsapp: '18295631041',            // country code + number, digits only
   phone: '+1 829 563 1041',
   address: 'Av. Winston Churchill, Santo Domingo',
   // FormSubmit (formsubmit.co) delivers the form by email, no server needed.
   // After activation you can replace the address in the URL with the random
   // alias FormSubmit sends you, so the email is not visible in the code.
-  formEndpoint: 'https://formsubmit.co/ajax/aacosta@nexostechs.com',
+  formEndpoint: 'https://formsubmit.co/ajax/gtellerias@nexostechs.com',
   // Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. Empty = no analytics.
   ga4: ''
 };

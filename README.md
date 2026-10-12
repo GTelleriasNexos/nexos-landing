@@ -21,8 +21,8 @@ Las capturas del mockup siguen en índigo; si la app adopta la paleta de marca, 
 
 1. **Datos de contacto** — en `CONFIG`, al principio de `assets/js/main.js`: correos de demo, WhatsApp/teléfono (829-563-1041) y dirección.
 2. **Formulario** — se envía con [FormSubmit](https://formsubmit.co) (gratis, sin servidor):
-   - Le llega a `aacosta@nexostechs.com`, con copia a `gtellerias@nexostechs.com` (`CONFIG.emails`).
-   - **Activación:** la primera solicitud enviada desde el sitio publicado dispara un correo de FormSubmit a `aacosta@nexostechs.com`. Hay que pulsar **Activate Form**; hasta entonces no llegan las solicitudes.
+   - Le llega a `gtellerias@nexostechs.com`, con copia a `aacosta@nexostechs.com` (`CONFIG.emails`).
+   - **Activación:** la primera solicitud enviada desde el sitio publicado dispara un correo de FormSubmit a `gtellerias@nexostechs.com`. Hay que pulsar **Activate Form**; hasta entonces no llegan las solicitudes.
    - Después de activar, FormSubmit envía un alias aleatorio (ej. `https://formsubmit.co/ajax/a1b2c3…`). Conviene ponerlo en `CONFIG.formEndpoint` para que el correo no se vea en el código ni reciba spam.
    - El botón "Responder" del correo responde directo al cliente (`_replyto`).
    - Si `formEndpoint` queda vacío, el botón abre el correo del visitante con la solicitud ya escrita.
