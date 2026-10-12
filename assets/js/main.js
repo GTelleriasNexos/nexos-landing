@@ -3,13 +3,15 @@
    Edit CONFIG with your real contact data before publishing.
    ========================================================== */
 const CONFIG = {
-  email: 'ventas@nexos.do',
-  whatsapp: '18090000000',            // country code + number, digits only
-  phone: '+1 809 000 0000',
+  // Demo requests go to every address here (first = main recipient, rest = CC).
+  emails: ['aacosta@nexos.com', 'gtellerias@nexos.com'],
+  whatsapp: '18295631041',            // country code + number, digits only
+  phone: '+1 829 563 1041',
   address: 'Av. Winston Churchill, Santo Domingo',
-  // Paste a Formspree (or similar) endpoint, e.g. 'https://formspree.io/f/xxxxxxx'.
-  // If empty, the form opens the visitor's email app with the message filled in.
-  formEndpoint: ''
+  // FormSubmit (formsubmit.co) delivers the form by email, no server needed.
+  // After activation you can replace the address in the URL with the random
+  // alias FormSubmit sends you, so the email is not visible in the code.
+  formEndpoint: 'https://formsubmit.co/ajax/aacosta@nexos.com'
 };
 
 document.documentElement.classList.add('js');
@@ -22,7 +24,9 @@ const $$ = (s, el = document) => [...el.querySelectorAll(s)];
     a.textContent = text;
     if (href) a.href = href;
   });
-  set('email', CONFIG.email, `mailto:${CONFIG.email}`);
+  $$('[data-contact="emails"]').forEach(el => {
+    el.innerHTML = CONFIG.emails.map(m => `<a href="mailto:${m}">${m}</a>`).join('<br>');
+  });
   set('whatsapp', formatPhone(CONFIG.whatsapp), `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent('Hola, quiero ver una demo de NEXOS.')}`);
   set('phone', CONFIG.phone, `tel:${CONFIG.phone.replace(/[^\d+]/g, '')}`);
   set('address', CONFIG.address);
@@ -190,15 +194,24 @@ $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-sele
     }
     const data = Object.fromEntries(new FormData(form));
     if (data._gotcha) return;
-    delete data._gotcha;
+
+    // Readable labels: these become the rows of the email the team receives.
+    const fields = {
+      'Nombre': data.nombre,
+      'Empresa': data.empresa,
+      'Correo': data.correo,
+      'Teléfono / WhatsApp': data.telefono || '—',
+      'Empleados': data.empleados,
+      'Plan de interés': data.plan,
+      'Datos actuales en': data.origen_datos,
+      'Cómo calculan la nómina hoy': data.mensaje || '—'
+    };
+    const subject = 'Solicitud de demo NEXOS — ' + data.empresa;
+    const [to, ...cc] = CONFIG.emails;
 
     if (!CONFIG.formEndpoint) {
-      const body = [
-        `Nombre: ${data.nombre}`, `Empresa: ${data.empresa}`, `Correo: ${data.correo}`,
-        `Teléfono: ${data.telefono || '—'}`, `Empleados: ${data.empleados}`, `Plan: ${data.plan}`,
-        `Datos actuales en: ${data.origen_datos}`, '', data.mensaje || ''
-      ].join('\n');
-      location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent('Demo de NEXOS — ' + data.empresa)}&body=${encodeURIComponent(body)}`;
+      const body = Object.entries(fields).map(([k, v]) => `${k}: ${v}`).join('\n');
+      location.href = `mailto:${CONFIG.emails.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       say('Abrimos tu correo con la solicitud lista para enviar.', 'ok');
       return;
     }
@@ -207,13 +220,21 @@ $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#plan-sele
     try {
       const r = await fetch(CONFIG.formEndpoint, {
         method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ ...data, _subject: 'Demo de NEXOS — ' + data.empresa })
+        body: JSON.stringify({
+          ...fields,
+          _subject: subject,
+          _cc: cc.join(','),
+          _replyto: data.correo,
+          _template: 'table',
+          _captcha: 'false'
+        })
       });
-      if (!r.ok) throw new Error(r.status);
+      const res = await r.json().catch(() => ({}));
+      if (!r.ok || String(res.success) !== 'true') throw new Error(res.message || r.status);
       form.reset();
       say('Solicitud enviada. Te escribimos hoy para agendar la demo.', 'ok');
     } catch {
-      say(`No se pudo enviar. Escríbenos a ${CONFIG.email} o por WhatsApp.`, 'err');
+      say(`No se pudo enviar. Escríbenos a ${to} o por WhatsApp al ${CONFIG.phone}.`, 'err');
     } finally {
       btn.disabled = false;
     }

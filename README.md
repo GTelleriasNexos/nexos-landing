@@ -17,10 +17,13 @@ Las capturas del mockup siguen en índigo; si la app adopta la paleta de marca, 
 
 ## Antes de publicar
 
-1. **Datos de contacto** — edita `CONFIG` en `assets/js/main.js` (correo, WhatsApp, teléfono, dirección).
-2. **Formulario** — GitHub Pages no procesa formularios. Opciones:
-   - Crea un formulario gratis en [formspree.io](https://formspree.io), copia el endpoint (`https://formspree.io/f/xxxx`) y pégalo en `CONFIG.formEndpoint`.
-   - Si lo dejas vacío, el botón abre el correo del visitante con la solicitud ya escrita.
+1. **Datos de contacto** — en `CONFIG`, al principio de `assets/js/main.js`: correos de demo, WhatsApp/teléfono (829-563-1041) y dirección.
+2. **Formulario** — se envía con [FormSubmit](https://formsubmit.co) (gratis, sin servidor):
+   - Le llega a `aacosta@nexos.com`, con copia a `gtellerias@nexos.com` (`CONFIG.emails`).
+   - **Activación:** la primera solicitud enviada desde el sitio publicado dispara un correo de FormSubmit a `aacosta@nexos.com`. Hay que pulsar **Activate Form**; hasta entonces no llegan las solicitudes.
+   - Después de activar, FormSubmit envía un alias aleatorio (ej. `https://formsubmit.co/ajax/a1b2c3…`). Conviene ponerlo en `CONFIG.formEndpoint` para que el correo no se vea en el código ni reciba spam.
+   - El botón "Responder" del correo responde directo al cliente (`_replyto`).
+   - Si `formEndpoint` queda vacío, el botón abre el correo del visitante con la solicitud ya escrita.
    - El formulario pregunta dónde está la información del cliente hoy (Excel, otro sistema, papel), para cotizar la migración.
 3. **Revisa los textos comerciales** marcados abajo: son propuestas, no datos del mockup.
 
